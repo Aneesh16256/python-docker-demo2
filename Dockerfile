@@ -13,6 +13,9 @@ WORKDIR /app
 COPY --from=builder /root/.local /root/.local
 COPY app/ .
 
+# Fix: Specify compatible versions
+RUN pip install --user werkzeug==2.3.7 flask==2.3.2
+
 ENV PATH=/root/.local/bin:$PATH
 ENV FLASK_APP=main.py
 
